@@ -75,12 +75,12 @@ import { TemplateService } from '../../services/template-service/template.servic
 }
 
 .cf-rating-item-icon:not(.cf-rating-disabled) {
-    box-shadow: 1px 1px 5px seagreen;
+    box-shadow: 1px 1px 5px crimson;
     margin: 3px;
 }
 
 .cf-rating-label:not(.cf-rating-disabled) {
-    color: darkseagreen;
+    color: darkcrimson;
 }
   `]
 })

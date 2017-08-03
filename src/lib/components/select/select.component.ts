@@ -19,8 +19,24 @@ import { TemplateService } from '../../services/template-service/template.servic
  */
 @Component({
   selector: 'cf-select',
-  templateUrl: './lib/components/select/select.component.html',
-  styleUrls: ['./lib/components/select/select.component.css'],
+  template: `
+  <Layout padding="8" *ngIf="cfSelect?.display" [class]="styling?.container?.class" [ngClass]="styling?.container?.dynamicClass">
+    <DropDown #dd
+            class="h2 cf-select"
+            [items]="items"
+            [placeholder]="cfSelect?.placeholder"
+            [(ngModel)]="cfSelect.selected"
+            [required]="required"
+            [hidden]="!display"
+            [disabled]="disable"
+            (opened)="cfSelectOpened()"
+            (selectedIndexChanged)="cfSelectChanged()"
+            (closed)="cfSelectClosed()"
+            [class]="styling?.select?.class"
+            [ngClass]="styling?.select?.dynamicClass">
+    </DropDown>
+</Layout>
+  `,
   providers: [
     { 
       provide: NG_VALUE_ACCESSOR,

@@ -20,7 +20,7 @@ import { TemplateService } from '../../services/template-service/template.servic
  */
 @Component({
   selector: 'cf-selectable',
-  templateUrl: './lib/components/selectable/selectable.component.html',
+  template: '<ng-content></ng-content>',
   styleUrls: []
 })
 export class CfSelectableComponent extends CfCoreComponent implements OnInit {

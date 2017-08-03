@@ -18,8 +18,19 @@ import { TemplateService } from '../../services/template-service/template.servic
  */
 @Component({
   selector: 'cf-fab',
-  templateUrl: './lib/components/fab/fab.component.html',
-  styleUrls: ['./lib/components/fab/fab.component.css']
+  template: `
+<StackLayout [class]="themeClass">
+    <StackLayout horizontalAlignment="center">
+        <FAB class="fab-button" (tap)="showButtons=!showButtons"></FAB>
+        <StackLayout *ngIf="buttons.length && showButtons" horizontalAlignment="center">
+            <GridLayout columns="auto" rows="auto" *ngFor="let button of buttons" horizontalAlignment="center">
+                <Label col="0" row="0" color="red" text="+" display="inline" setInlineStyle="z-index: 10000;"></Label>
+                <FAB col="0" row="0" class="mini-fab-button" display="inline"></FAB>
+            </GridLayout>
+        </StackLayout>
+    </StackLayout>
+</StackLayout>
+  `
 })
 export class CfFabComponent extends CfCoreComponent implements OnInit {
   

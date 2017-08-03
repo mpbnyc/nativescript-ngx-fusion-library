@@ -57,11 +57,9 @@ export class TemplateService {
 		return this.http.get(url).map(res=>{
 			// console.log("pushing into ",this.hashtable);
 			// this.hashtable.push({key:url, value:res.json()});
-			console.log(res);
 			return res.json();
 		})
 		.catch((error:any) => { 
-			console.log(error);
 			return Observable.throw('Server error');});
   }
 

@@ -19,8 +19,18 @@ import { TemplateService } from '../../services/template-service/template.servic
  */
 @Component({
   selector: 'cf-checkbox',
-  templateUrl: './lib/components/checkbox/checkbox.component.html',
-  styleUrls: ['./lib/components/checkbox/checkbox.component.css'],
+	template: `
+<cf-selectable>
+    <StackLayout *ngIf="cfCheckbox?.display" [class]="styling?.container?.class" [ngClass]="getContainerClass()">
+        <StackLayout orientation="horizontal" class="cf-checkbox-group-container">
+            <Input class="h2" *ngIf="cfSwitch.itemPosition==='before'" text="cfSwitch.item">
+            <CheckBox:CheckBox [class]="styling?.checkbox?.class" [ngClass]="getCheckboxClass()" [(ngModel)]="checked" [disabled]="cfCheckbox?.disable" [labelPosition]="cfCheckbox?.itemPosition || 'after'" [color]="styling?.checkbox?.themeColor || 'primary'"
+                (click)="notifyGroup()"/>
+            <Input class="h2" *ngIf="cfSwitch.itemPosition==='after'" text="cfSwitch.item">
+        </StackLayout>
+    </StackLayout>
+</cf-selectable>
+	`,
   providers: [{provide: CfSelectableComponent, useExisting: forwardRef(() => CfCheckboxComponent)}]
 })
 

@@ -15,8 +15,14 @@ import { TemplateService } from '../../services/template-service/template.servic
  */
 @Component({
 	selector: 'cf-list',
-	templateUrl: './lib/components/list/list.component.html',
-	styleUrls: ['./lib/components/list/list.component.css']
+	template: `
+	<StackLayout>
+		<StackLayout [class]="styling?.container?.class" [ngClass]="styling?.container?.dynamicClass">
+			<Label *ngIf="cfList?.title" class="cf-list-title {{styling?.title?.class}}" [ngClass]="styling?.title?.dynamicClass" [text]="cfList?.title"></Label>
+			<ng-content #myContent></ng-content>
+		</StackLayout>
+	</StackLayout>
+	`,
 })
 export class CfListComponent extends CfCoreComponent implements OnInit {
 	/**

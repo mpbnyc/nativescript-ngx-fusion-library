@@ -18,8 +18,17 @@ import { TemplateService } from '../../services/template-service/template.servic
  */
 @Component({
   selector: 'cf-switch',
-  templateUrl: './lib/components/switch/switch.component.html',
-  styleUrls: ['./lib/components/switch/switch.component.css'],
+	template: `
+	<cf-selectable>
+    <StackLayout *ngIf="cfSwitch?.display" [class]="styling?.container?.class" [ngClass]="getContainerClass()">
+        <Input class="h2" *ngIf="cfSwitch.itemPosition==='before'" text="cfSwitch.item">
+        <StackLayout orientation="horizontal">
+            <Switch class="switch {{styling?.switch?.class}}" [ngClass]="getSwitchClass()" [(ngModel)]="checked" (click)="notifyGroup()" [disabled]="cfSwitch?.disable" [color]="styling?.switch?.themeColor"></Switch>
+        </StackLayout>
+        <Input class="h2" *ngIf="cfSwitch.itemPosition==='after'" text="cfSwitch.item">
+    </StackLayout>
+</cf-selectable>
+	`,
   providers: [{provide: CfSelectableComponent, useExisting: forwardRef(() => CfSwitchComponent)}]
 })
 export class CfSwitchComponent extends CfSelectableComponent implements OnInit {

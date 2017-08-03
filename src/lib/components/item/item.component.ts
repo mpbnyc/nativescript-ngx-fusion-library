@@ -9,8 +9,22 @@ import { TemplateService } from '../../services/template-service/template.servic
 
 @Component({
 	selector: 'cf-item',
-	templateUrl: './lib/components/item/item.component.html',
-	styleUrls: ['./lib/components/item/item.component.css']
+	template: `
+<StackLayout orientation="horizontal">
+    <cf-checkbox class="checkbox" (click)="notifyList()" [hidden]="(!selectable || !withCheckbox)" style="vertical-align: center;" [(checked)]="selected" item=""></cf-checkbox>
+    <StackLayout layout="row" [ngClass]="selected? styling?.selectedItem?.class: styling?.item?.class">
+        <StackLayout class="cf-list-item-action" orientation="horizontal">
+            <StackLayout class="cf-list-item-action" (tap)="selectMe()">
+                <ng-content></ng-content>
+            </StackLayout>
+            <cf-icon *ngIf="details" class="cf-list-item-trigger" [ngClass]="{'cf-expanded' : showDetails}" (cfOnToggle)="showTheDetails()" [cfIcon]="myFusionIcon"></cf-icon>
+        </StackLayout>
+        <StackLayout (tap)="selectMe()" visibility="{{ showDetails ? 'visible' : 'collapsed' }}" class="cf-list-item-details-container">
+            <ng-content class="cf-list-item-details" [ngClass]="{'cf-expanded' : showDetails}" select="[item-details]"></ng-content>
+        </StackLayout>
+    </StackLayout>
+</StackLayout>
+`
 })
 
 /**

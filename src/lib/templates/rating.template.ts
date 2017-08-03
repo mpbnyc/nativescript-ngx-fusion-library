@@ -25,8 +25,8 @@ export const RatingTemplates = {
                 dynamicClass: "'dynamic-items-class'"
             }),
             iconSize: '30px',
-            filledColor: 'lightseagreen',
-            emptyColor: 'darkseagreen',
+            filledColor: 'crimson',
+            emptyColor: 'indianred',
         })
     }
 }

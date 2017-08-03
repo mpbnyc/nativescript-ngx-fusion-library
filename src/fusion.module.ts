@@ -9,11 +9,18 @@ import { CfIconComponent } from "./lib/components/icon/icon.component";
 import { CfImageComponent } from "./lib/components/image/image.component";
 import { CfButtonComponent } from "./lib/components/button/button.component";
 import { CfRatingComponent } from "./lib/components/rating/rating.component";
+import { CfListComponent } from "./lib/components/list/list.component";
+import { CfItemComponent } from "./lib/components/item/item.component";
+import { CfCheckboxComponent } from "./lib/components/checkbox/checkbox.component";
+import { CfInputComponent } from "./lib/components/input/input.component";
+import { CfFabComponent } from "./lib/components/fab/fab.component";
+import { CfGalleryComponent } from "./lib/components/gallery/gallery.component";
+import { CfSelectComponent } from "./lib/components/select/select.component";
 import { TemplateService } from "./lib/services/template-service/template.service";
 import { ConfigService } from "./lib/services/configuration-service/configuration.service";
 
 @NgModule({
-  declarations: [CfIconComponent, CfImageComponent, CfButtonComponent, CfRatingComponent],
+  declarations: [CfIconComponent, CfImageComponent, CfButtonComponent, CfRatingComponent, CfGalleryComponent, CfCheckboxComponent, CfSelectComponent, CfItemComponent, CfListComponent, CfFabComponent, CfInputComponent],
   imports: [
     CommonModule,
     NativeScriptHttpModule,
@@ -26,7 +33,7 @@ import { ConfigService } from "./lib/services/configuration-service/configuratio
   providers: [ TNSFontIconService, TemplateService, ConfigService,
   ModalDialogService,
         { provide: NgModuleFactoryLoader, useClass: NSModuleFactoryLoader }],
-  exports: [CfIconComponent, CfImageComponent, CfButtonComponent, CfRatingComponent],
+  exports: [CfIconComponent, CfImageComponent, CfButtonComponent, CfRatingComponent, CfGalleryComponent, CfCheckboxComponent, CfSelectComponent, CfItemComponent, CfListComponent, CfFabComponent, CfInputComponent],
   schemas: [NO_ERRORS_SCHEMA],
 })
 export class FusionModule {}
